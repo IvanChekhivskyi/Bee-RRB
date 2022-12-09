@@ -1,0 +1,50 @@
+.modal_header {
+    opacity: 100%;
+    justify-content: center;
+}
+
+.form_module_style {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 3px;
+    width: 140px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    height: 15px;
+}
+
+.form_price_style {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 140px;
+    display: flex;
+    justify-content: center;
+    background: greenyellow;
+    border: 2px solid gold;
+    border-radius: 10px;
+}
+
+.form_cost_style {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 140px;
+    display: flex;
+    justify-content: center;
+    background: gold;
+    border: 2px solid red;
+    border-radius: 10px;
+}
+
+.currency_style {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 15px;
+    width: 30px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    height: 15px;
+    position: relative;
+    left: 25%;
+}

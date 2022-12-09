@@ -1,22 +1,24 @@
 import React from 'react';
-
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Button, Stack} from "react-bootstrap";
+import NaviBar from "./components/NaviBar/NaviBar";
+import {BrowserRouter} from "react-router-dom";
+import AppRouter from "./components/Router/AppRouter";
 
-function App () {
+function App() {
 
-    return (
 
-        <Stack direction="horizontal" gap={2}>
-            <Button as="a" variant="primary">
-                Button as link
-            </Button>
-            <Button as="a" variant="success">
-                Button as link
-            </Button>
-        </Stack>
-    );
+        return (
+            <>
 
-}
+                <BrowserRouter>
+                    <NaviBar/>
+                    <AppRouter/>
+                </BrowserRouter>
+
+            </>
+
+
+        );
+    }
 
 export default App;

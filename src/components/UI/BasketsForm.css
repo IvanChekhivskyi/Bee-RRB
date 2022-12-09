@@ -4,31 +4,8 @@
 }
 
 .basket_form{
-    transform-box: border-box;
-    position: absolute;
-    top: 55px;
-    width: 400px;
-    left: 100%;
-    margin-left: -400px;
-    height: 100%;
     background: #e5e59b;
-    border: 4px solid lightslategray;
     border-top-left-radius: 5%;
-}
-
-.basket_form-enter {
-    transform: translateX(-350px);
-}
-.basket_form-enter-active {
-    transform: translateX(0px);
-    transition: all 400ms ease-in;
-}
-.basket_form-exit {
-    opacity: 1;
-}
-.basket_form-exit-active {
-    transform: translateX(-350px);
-    transition: all 400ms ease-in;
 }
 
 
@@ -51,7 +28,7 @@
     border-radius: 50%;
     position: absolute;
     right: 0%;
-    bottom: 40%;
+    bottom: 50%;
     display: flex;
     justify-content: center;
 }
