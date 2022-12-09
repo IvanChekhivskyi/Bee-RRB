@@ -7,7 +7,6 @@ import {correctProductAction, countTotalCostAction, removeProductAction} from ".
 import {Link} from "react-router-dom";
 
 const InSideBasketForm = () => {
-    const availableUnitsProduct = 100; //значень кількості наявних одиниць товару
     const arrBasket = useSelector(state => state.product.product)
     const totalCost = useSelector(state => state.product.totalCost)
     const [isOpen, setIsOpen] = useState(false);
@@ -19,23 +18,17 @@ const InSideBasketForm = () => {
         }else setIsOpen(true);
     }
 
-    const removeProduct = (id) => {
-        dispatch(removeProductAction(id));
-        dispatch(countTotalCostAction());
-    }
+    const removeProduct = (id) => dispatch(removeProductAction(id));
 
-    const correctQuantity = (id, value) => {
-        if (availableUnitsProduct > value) {
+    const correctQuantity = (id, isQ, value) => {
+        if (isQ > value) {
             if (value > 0) {
                 dispatch(correctProductAction({id: id, quantity: value}));
-            }else{
-                dispatch(correctProductAction({id: id, quantity: 1}));
-            }
-        }else{
-            dispatch(correctProductAction({id: id, quantity: availableUnitsProduct}));
-        }
-        dispatch(countTotalCostAction());
+            }else dispatch(correctProductAction({id: id, quantity: 1}));
+        }else dispatch(correctProductAction({id: id, quantity: isQ}));
     }
+
+    dispatch(countTotalCostAction());
 
     return (
         <>
@@ -52,12 +45,15 @@ const InSideBasketForm = () => {
                                                 <Col>
                                                     {product.price}
                                                 </Col>
+                                                <Col>
+                                                    <p style={{color: "darkred"}}>{product.isQ}:(<span style={{color: "green"}}>{product.isQ - product.quantity}</span>)</p>
+                                                </Col>
                                                 <Col style={{width: 60}}>
                                                     <input
                                                         style={{width: 60}}
                                                         type={"number"}
                                                         value={product.quantity}
-                                                        onChange={(event) => correctQuantity(product.id, event.target.value)}
+                                                        onChange={(event) => correctQuantity(product.id, product.isQ, event.target.value)}
                                                         min={1}
                                                     />
                                                 </Col>

@@ -1,20 +1,18 @@
 import React, {useState} from 'react';
-import {Button, Modal, ModalBody, ModalFooter, ModalHeader, ModalTitle} from "react-bootstrap";
+import {Button, CloseButton, Col, Modal, ModalBody, ModalFooter, ModalHeader, ModalTitle} from "react-bootstrap";
 import {form_module_style, form_cost_style, form_price_style} from "./ProductModule.css"
 
 //======================================================================================================================
 
 const ProductModule = ({show, setShow, quantity, setQuantity, infoProduct, addProductInBasket}) => {
-    const availableUnitsProduct = 100; //значень кількості наявних одиниць товару
     const [errorQuantity, setErrorQuantity] = useState(" ");
-    const inputQuantity = (value) => {setErrorQuantity(" ");
-        setQuantity(value)
-    }
+
+    const inputQuantity = (value) => {setErrorQuantity(" "); setQuantity(value);}
 
 //----------------------------------------------------------------------------------------------------------------------
 
     const addQuantity = () => {
-        if(0 < quantity && quantity < availableUnitsProduct + 1){
+        if(0 < quantity && quantity < infoProduct.isQ + 1){
             setShow(false);
             addProductInBasket();
         }else setErrorQuantity("Недопустиме значення!!!");
@@ -29,15 +27,11 @@ const ProductModule = ({show, setShow, quantity, setQuantity, infoProduct, addPr
             >
                 <ModalHeader>
                     <ModalTitle>
-                        {infoProduct.name}
+                        <Col>{infoProduct.name}</Col>
+                        <Col><h6 style={{color: "green"}}>* В наявності: {infoProduct.isQ - quantity}</h6></Col>
                     </ModalTitle>
-                    <button
-                        style={{width: 25, height:25, borderRadius: 10, color: "red"}}
-                        onClick={() => setShow(false)}
-                    >
-                        X
-                    </button>
-                </ModalHeader>
+                        <CloseButton onClick={() => setShow(false)} style={{width: 10, height: 10}} />
+                    </ModalHeader>
                 <ModalBody>
                     <div style={{display: "flex", alignItems: "center", justifyContent: "center", height: 10}}>
                         <form className={"form_module_style"}>Ціна за одиницю / грн.</form>
@@ -51,8 +45,8 @@ const ProductModule = ({show, setShow, quantity, setQuantity, infoProduct, addPr
                             value={quantity}
                             type={"number"}
                             onChange={(event) => inputQuantity(event.target.value)}
-                            min={1}
-                            max={availableUnitsProduct}
+                            min={0}
+                            max={infoProduct.isQ}
                         />
                         <form className={"form_cost_style"}>{Number(infoProduct.price) * Number(quantity)}</form>
                     </div>

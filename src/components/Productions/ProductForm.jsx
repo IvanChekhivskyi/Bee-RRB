@@ -49,16 +49,16 @@ const ProductForm = ({CategoryName, link}) => {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-    const clickAddProduct = (id, name, price) => {
+    const clickAddProduct = (id, name, isQ, price) => {
         if(id !== " ") {
             if(arrBasket.some(product => product.id === id)) {
                 giveValueQuantity(id);
-                setInfoProduct({id: id, name: name, price: price, quantity: quantity});
+                setInfoProduct({id: id, name: name, price: price, isQ: isQ, quantity: quantity});
                 setShow(true);
                 setCorrectQuantity(true);
             }else{
-                setInfoProduct({id: id, name: name, price: price, quantity: 1});
-                setQuantity(1);
+                setInfoProduct({id: id, name: name, price: price, isQ: isQ, quantity: 1});
+                setQuantity(0);
                 setShow(true);
                 setCorrectQuantity(false);
             }
@@ -71,7 +71,7 @@ const ProductForm = ({CategoryName, link}) => {
         if(correctQuantity){
             for (let i = 0; i < arrBasket.length; i++){
                 if(arrBasket[i].id === infoProduct.id){
-                    dispatch(correctProductAction({id: infoProduct.id, quantity: quantity}));
+                    dispatch(correctProductAction({id: infoProduct.id, isQ: infoProduct.isQ, quantity: quantity}));
                     dispatch(countTotalCostAction())
                 }
             }
@@ -79,6 +79,7 @@ const ProductForm = ({CategoryName, link}) => {
             dispatch(addProductAction([{    id: infoProduct.id,
                                                     name: infoProduct.name,
                                                     price: infoProduct.price,
+                                                    isQ: infoProduct.isQ,
                                                     quantity: quantity          }]));
             dispatch(countTotalCostAction())
     }
@@ -142,7 +143,7 @@ const ProductForm = ({CategoryName, link}) => {
                                     <div>
                                         <Button
                                             variant={"success"}
-                                            onClick={() => clickAddProduct(position.id, position.name, position.price)}
+                                            onClick={() => clickAddProduct(position.id, position.name, position.isQ, position.price)}
                                         >
                                             Додати у кошик
                                         </Button>
