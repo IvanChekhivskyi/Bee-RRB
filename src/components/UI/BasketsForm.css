@@ -1,0 +1,78 @@
+.containerStyle{
+    width: 70%;
+    background: cornsilk;
+}
+
+.basket_form{
+    transform-box: border-box;
+    position: absolute;
+    top: 55px;
+    width: 400px;
+    left: 100%;
+    margin-left: -400px;
+    height: 100%;
+    background: #e5e59b;
+    border: 4px solid lightslategray;
+    border-top-left-radius: 5%;
+}
+
+.basket_form-enter {
+    transform: translateX(-350px);
+}
+.basket_form-enter-active {
+    transform: translateX(0px);
+    transition: all 400ms ease-in;
+}
+.basket_form-exit {
+    opacity: 1;
+}
+.basket_form-exit-active {
+    transform: translateX(-350px);
+    transition: all 400ms ease-in;
+}
+
+
+.cl_btn {
+    width: 30px;
+    height: 30px;
+    background-color: #093ada;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 50%;
+    left: -40px;
+    display: flex;
+    justify-content: center;
+}
+
+.op_btn {
+    width: 30px;
+    height: 30px;
+    background-color: #2a7019;
+    border-radius: 50%;
+    position: absolute;
+    right: 0%;
+    bottom: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.positions_basket{
+    position: relative;
+    left: 5px;
+}
+
+.remove_btn {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+}
+.info_btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    background: lavenderblush;
+}
