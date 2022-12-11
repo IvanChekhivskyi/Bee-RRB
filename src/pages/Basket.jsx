@@ -11,7 +11,7 @@ import {
     removeProductAction
 } from "../redux/basketReduser";
 import {Link} from "react-router-dom";
-import PlaceOrderProductForm from "../components/PlaceOrderProduct/PlaceOrderProductForm";
+import PlaceOrderProductForm from "../components/UI/PlaceOrderProductForm";
 
 const Basket = () => {
     const arrBasket = useSelector(state => state.product.product)
@@ -137,7 +137,7 @@ const Basket = () => {
                 </Container>
             </>
             <>
-                <Modal show={show} onHide={ShowModuleOrder}>
+                <Modal size={"xl"} show={show} onHide={ShowModuleOrder}>
                     <PlaceOrderProductForm IsOrderAccepted={IsOrderAccepted}/>
                 </Modal>
                 <Modal show={showAccept} onHide={ShowModuleAccepted}>

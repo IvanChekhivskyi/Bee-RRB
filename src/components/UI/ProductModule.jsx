@@ -28,7 +28,7 @@ const ProductModule = ({show, setShow, quantity, setQuantity, infoProduct, addPr
                 <ModalHeader>
                     <ModalTitle>
                         <Col>{infoProduct.name}</Col>
-                        <Col><h6 style={{color: "green"}}>* В наявності: {infoProduct.isQ - quantity}</h6></Col>
+                        <Col><h6 style={{color: "green"}}>* В наявності: <span style={{color: "darkred"}}>{infoProduct.isQ}:(<span style={{color: "green"}}>{infoProduct.isQ - quantity}</span>)</span></h6></Col>
                     </ModalTitle>
                         <CloseButton onClick={() => setShow(false)} style={{width: 10, height: 10}} />
                     </ModalHeader>
@@ -45,7 +45,7 @@ const ProductModule = ({show, setShow, quantity, setQuantity, infoProduct, addPr
                             value={quantity}
                             type={"number"}
                             onChange={(event) => inputQuantity(event.target.value)}
-                            min={0}
+                            min={1}
                             max={infoProduct.isQ}
                         />
                         <form className={"form_cost_style"}>{Number(infoProduct.price) * Number(quantity)}</form>

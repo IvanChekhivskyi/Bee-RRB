@@ -58,7 +58,7 @@ const ProductForm = ({CategoryName, link}) => {
                 setCorrectQuantity(true);
             }else{
                 setInfoProduct({id: id, name: name, price: price, isQ: isQ, quantity: 1});
-                setQuantity(0);
+                setQuantity(1);
                 setShow(true);
                 setCorrectQuantity(false);
             }
